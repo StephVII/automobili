@@ -10,6 +10,7 @@ public class Main {
 		
 		int risposta;
 		String scelta;
+		Auto auto;
 		
 		Auto a1 = new Auto();
 		Auto a2 = new Auto();
@@ -25,20 +26,26 @@ public class Main {
 		a2.consumoMedio = 23;
 		
 		System.out.println("Benvenuto.");
-		
+		auto = a1;
 		do
 		{
 			System.out.println("\nQuale auto vuoi guidare? (1 o 2)");
 			risposta = Integer.parseInt(sc.nextLine());
 			
 			if(risposta == 1)
-			{
+				auto = a1;
+			else if(risposta == 2)
+				auto = a2;
+			else
+				System.out.println("L'auto scelta non è valida.");
+			
+			
 				System.out.println("Cosa vuoi fare? (accelera/decelera)");
 				scelta = sc.nextLine();
 				if(scelta.equals("accelera"))
-					a1.accelera();
+					auto.accelera();
 				else if(scelta.equals("decelera"))
-					a1.rallenta();
+					auto.rallenta();
 				else
 					System.out.println("Comando invalido.");
 				a1.aggiorna();
@@ -46,25 +53,7 @@ public class Main {
 				System.out.println("\n");
 				a2.aggiorna();
 				a2.visualizzaDati();
-			}
-			else if(risposta == 2)
-			{
-				System.out.println("Cosa vuoi fare? (accelera/decelera)");
-				scelta = sc.nextLine();
-				if(scelta.equals("accelera"))
-					a2.accelera();
-				else if(scelta.equals("decelera"))
-					a2.rallenta();
-				else
-					System.out.println("Comando invalido.");
-				a1.aggiorna();
-				a1.visualizzaDati();
-				System.out.println("\n\n");
-				a2.aggiorna();
-				a2.visualizzaDati();
-			}
-			else
-				System.out.println("L'auto scelta non è valida.");
+			
 		}
 		while(true);
 		
